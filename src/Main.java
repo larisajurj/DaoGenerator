@@ -12,5 +12,22 @@ public class Main {
              ) {
             System.out.println(e.getName());
         }
+
+        employeeDAO.deleteByNameAndSurname("Ana", "Popa");
+
+        Employee e = new Employee();
+        e.setAge(24);
+        e.setSsn(7);
+        e.setName("Ioana");
+        e.setSurname("Maria");
+        employeeDAO.save(e);
+
+        BookDAO bookDAO = DAOGenerator.createDAO(BookDAO.class, Book.class, connectionUrl, user, password);
+        List<Book> books = bookDAO.findByYearAndAuthor(2000, "auth2000");
+        for(Book b: books){
+            System.out.println(b.getTitle());
+        }
+
+
     }
 }
